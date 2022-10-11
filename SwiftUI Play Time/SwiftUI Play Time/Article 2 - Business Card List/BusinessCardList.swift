@@ -8,24 +8,25 @@
 import SwiftUI
 
 struct BusinessCardList: View {
+    
+    let viewModels = [
+        BusinessCardViewModel(
+            imageName: "man",
+            name: "Jack Doe",
+            occupation: "Plumber",
+            workplace: "Plumbers LLC"
+        ),
+        BusinessCardViewModel(
+            imageName: "man",
+            name: "John Doe",
+            occupation: "Dentist",
+            workplace: "Dentists LLC"
+        )
+    ]
+    
     var body: some View {
-        List {
-            BusinessCard(viewModel:
-                            BusinessCardViewModel(
-                                imageName: "man",
-                                name: "Jack Doe",
-                                occupation: "Plumber",
-                                workplace: "Plumbers LLC"
-                            )
-            )
-            BusinessCard(viewModel:
-                            BusinessCardViewModel(
-                                imageName: "man",
-                                name: "John Doe",
-                                occupation: "Dentist",
-                                workplace: "Dentists LLC"
-                            )
-            )
+        List(viewModels) { viewModel in
+            BusinessCard(viewModel: viewModel)
         }
     }
 }
