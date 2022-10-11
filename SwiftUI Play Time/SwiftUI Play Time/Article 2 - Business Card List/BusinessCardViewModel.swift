@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct BusinessCardViewModel {
+struct BusinessCardViewModel: Identifiable {
+    let id = UUID()
     let imageName: String
     let name: String
     let occupation: String
