@@ -8,25 +8,28 @@
 import SwiftUI
 
 struct BusinessCardList_Scroll: View {
+    
+    let viewModels = [
+        BusinessCardViewModel(
+            imageName: "man",
+            name: "Jack Doe",
+            occupation: "Plumber",
+            workplace: "Plumbers LLC"
+        ),
+        BusinessCardViewModel(
+            imageName: "man",
+            name: "John Doe",
+            occupation: "Dentist",
+            workplace: "Dentists LLC"
+        )
+    ]
+    
     var body: some View {
         ScrollView {
             VStack {
-                BusinessCard(viewModel:
-                                BusinessCardViewModel(
-                                    imageName: "man",
-                                    name: "Jack Doe",
-                                    occupation: "Plumber",
-                                    workplace: "Plumbers LLC"
-                                )
-                )
-                BusinessCard(viewModel:
-                                BusinessCardViewModel(
-                                    imageName: "man",
-                                    name: "John Doe",
-                                    occupation: "Dentist",
-                                    workplace: "Dentists LLC"
-                                )
-                )
+                ForEach(viewModels) { viewModel in
+                    BusinessCard(viewModel: viewModel)
+                }
             }
         }
     }
