@@ -9,6 +9,24 @@ import SwiftUI
 
 struct BusinessCard: View {
     
+    // MARK: - Properties
+    
+    private let imageName: String
+    private let name: String
+    private let occupation: String
+    private let workplace: String
+    
+    // MARK: - Init
+    
+    init(imageName: String, name: String, occupation: String, workplace: String) {
+        self.imageName = imageName
+        self.name = name
+        self.occupation = occupation
+        self.workplace = workplace
+    }
+    
+    // MARK: - Constants
+    
     private enum Constants {
         static var imageToLabelsSpacing: CGFloat { 30.0 }
         static var imageSize: CGSize { CGSize(width: 60.0, height: 60.0) }
@@ -21,18 +39,18 @@ struct BusinessCard: View {
     
     var body: some View {
         HStack(spacing: Constants.imageToLabelsSpacing) {
-            Image("man")
+            Image(imageName)
                 .resizable()
                 .frame(width: Constants.imageSize.width, height: Constants.imageSize.height)
                 .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
             VStack(alignment: .leading, spacing: 0.0) {
-                Text("John Doe")
+                Text(name)
                     .font(.system(size: Constants.nameFontHeight, weight: .bold))
                 Spacer()
-                Text("Attorney at law")
+                Text(occupation)
                     .font(.system(size: Constants.occupationFontHeight, weight: .regular))
                 Spacer()
-                Text("Berkley Ltd.")
+                Text(workplace)
                     .font(.system(size: Constants.companyFontHeight, weight: .regular))
                     .italic()
             }.frame(height: Constants.imageSize.height)
@@ -43,6 +61,11 @@ struct BusinessCard: View {
 
 struct BusinessCard_Previews: PreviewProvider {
     static var previews: some View {
-        BusinessCard()
+        BusinessCard(
+            imageName: "man",
+            name: "John Doe",
+            occupation: "Attorney at law",
+            workplace: "Berkeley Ltd."
+        )
     }
 }
