@@ -10,17 +10,21 @@ import SwiftUI
 struct BusinessCardList: View {
     var body: some View {
         List {
-            BusinessCard(
-                imageName: "man",
-                name: "Jack Doe",
-                occupation: "Plumber",
-                workplace: "Plumbers LLC"
+            BusinessCard(viewModel:
+                            BusinessCardViewModel(
+                                imageName: "man",
+                                name: "Jack Doe",
+                                occupation: "Plumber",
+                                workplace: "Plumbers LLC"
+                            )
             )
-            BusinessCard(
-                imageName: "man",
-                name: "John Doe",
-                occupation: "Dentist",
-                workplace: "Dentists LLC"
+            BusinessCard(viewModel:
+                            BusinessCardViewModel(
+                                imageName: "man",
+                                name: "John Doe",
+                                occupation: "Dentist",
+                                workplace: "Dentists LLC"
+                            )
             )
         }
     }

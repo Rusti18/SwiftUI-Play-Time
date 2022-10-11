@@ -11,18 +11,12 @@ struct BusinessCard: View {
     
     // MARK: - Properties
     
-    private let imageName: String
-    private let name: String
-    private let occupation: String
-    private let workplace: String
+    private let viewModel: BusinessCardViewModel
     
     // MARK: - Init
     
-    init(imageName: String, name: String, occupation: String, workplace: String) {
-        self.imageName = imageName
-        self.name = name
-        self.occupation = occupation
-        self.workplace = workplace
+    init(viewModel: BusinessCardViewModel) {
+        self.viewModel = viewModel
     }
     
     // MARK: - Constants
@@ -39,18 +33,18 @@ struct BusinessCard: View {
     
     var body: some View {
         HStack(spacing: Constants.imageToLabelsSpacing) {
-            Image(imageName)
+            Image(viewModel.imageName)
                 .resizable()
                 .frame(width: Constants.imageSize.width, height: Constants.imageSize.height)
                 .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
             VStack(alignment: .leading, spacing: 0.0) {
-                Text(name)
+                Text(viewModel.name)
                     .font(.system(size: Constants.nameFontHeight, weight: .bold))
                 Spacer()
-                Text(occupation)
+                Text(viewModel.occupation)
                     .font(.system(size: Constants.occupationFontHeight, weight: .regular))
                 Spacer()
-                Text(workplace)
+                Text(viewModel.workplace)
                     .font(.system(size: Constants.companyFontHeight, weight: .regular))
                     .italic()
             }.frame(height: Constants.imageSize.height)
@@ -60,12 +54,14 @@ struct BusinessCard: View {
 }
 
 struct BusinessCard_Previews: PreviewProvider {
+    static var viewModel = BusinessCardViewModel(
+        imageName: "man",
+        name: "John Doe",
+        occupation: "Attorney at law",
+        workplace: "Berkeley Ltd."
+    )
+    
     static var previews: some View {
-        BusinessCard(
-            imageName: "man",
-            name: "John Doe",
-            occupation: "Attorney at law",
-            workplace: "Berkeley Ltd."
-        )
+        BusinessCard(viewModel: viewModel)
     }
 }

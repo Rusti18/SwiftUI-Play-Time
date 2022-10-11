@@ -11,17 +11,21 @@ struct BusinessCardList_Scroll: View {
     var body: some View {
         ScrollView {
             VStack {
-                BusinessCard(
-                    imageName: "man",
-                    name: "Jack Doe",
-                    occupation: "Plumber",
-                    workplace: "Plumbers LLC"
+                BusinessCard(viewModel:
+                                BusinessCardViewModel(
+                                    imageName: "man",
+                                    name: "Jack Doe",
+                                    occupation: "Plumber",
+                                    workplace: "Plumbers LLC"
+                                )
                 )
-                BusinessCard(
-                    imageName: "man",
-                    name: "John Doe",
-                    occupation: "Dentist",
-                    workplace: "Dentists LLC"
+                BusinessCard(viewModel:
+                                BusinessCardViewModel(
+                                    imageName: "man",
+                                    name: "John Doe",
+                                    occupation: "Dentist",
+                                    workplace: "Dentists LLC"
+                                )
                 )
             }
         }
